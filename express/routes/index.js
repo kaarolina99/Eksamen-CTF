@@ -5,7 +5,7 @@ const app = express();
 
 app.get("/", async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM users");
+    const result = await db.query("SELECT * FROM password");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
