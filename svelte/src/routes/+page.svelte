@@ -4,11 +4,11 @@
 </script>
 
 <div>
-    <Navbar></Navbar>
-    <h1 class = "MMCTF"> Murder Mystery CTF </h1>
         <div>
+            <Navbar></Navbar>
+            <h1 class = "MMCTF"> Murder Mystery CTF </h1>
             <h4 class="discription1"> I denne spennende CTF utfordringen, inntar du rollen som en detektiv som må løse et grusomt mord.</h4>
-            <h4 class="discription2"> Du må finne liket, identifisere gjerningsvåpenet og samle biologiske spor for å avsløre morderen. </h4>
+            <h4 class="discription2"> Du må finne liket til Philippa Britton, identifisere gjerningsvåpenet og samle biologiske spor for å avsløre morderen. </h4>
             <h4 class="discription3"> Bruk dine ferdigheter innen etterforskning og problemløsning for å hjelpe detektiven med å løse saken og bringe rettferdighet til offeret.</h4>
             <h4 class="discription4"> Klarer du å samle alle bevisene og løse mysteriet? Din hjelp er avgjørende for å oppklare denne mystiske forbrytelsen. </h4>
             <div>
@@ -34,7 +34,7 @@
         color: white;
         position: absolute;
         margin-left: 20px;
-        margin-top: 30px;
+        margin-top: 100px;
         text-shadow: 2px 1px darkslategrey;
 
     }
@@ -44,7 +44,7 @@
         color: white;
         position: absolute;
         margin-left: 20px;
-        margin-top: 90px;
+        margin-top: 170px;
         text-shadow: 2px 1px darkslategrey;
     }
     .discription2{
@@ -53,7 +53,7 @@
         color: white;
         position: absolute;
         margin-left: 20px;
-        margin-top: 110px;
+        margin-top: 190px;
         text-shadow: 2px 1px darkslategrey;
     }
     .discription3{
@@ -62,7 +62,7 @@
         color: white;
         position: absolute;
         margin-left: 20px;
-        margin-top: 130px;
+        margin-top: 210px;
         text-shadow: 2px 1px darkslategrey;
     }
 
@@ -72,7 +72,7 @@
         color: white;
         position: absolute;
         margin-left: 20px;
-        margin-top: 150px;
+        margin-top: 230px;
         text-shadow: 2px 1px darkslategrey;
     }
 
