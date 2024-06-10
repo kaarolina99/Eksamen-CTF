@@ -29,38 +29,33 @@
 }
 
 .weapon{
-    border: solid #ff0000 2px;
+    border-radius: 25px;
     background-color: #BEBEBE;
     padding: 15px;
 }
 
 .weapon:hover{
-    border: solid black 2px;
     background-color: #FF6161;
 }
 
 .dna{
-    border: solid #ff0000 2px;
+    border-radius: 25px;
     background-color: #BEBEBE;
     padding: 15px;
 }
 
 .dna:hover{
-    border: solid black 2px;
     background-color: #FF6161;
-    padding: 15px;
 }
 
 .corpse{
-    border: solid #ff0000 2px;
+    border-radius: 25px;
     background-color: #BEBEBE;
     padding: 15px;
 }
 
 .corpse:hover{
-    border: solid black 2px;
     background-color: #FF6161;
-    padding: 15px;
 }
 
 </style>
