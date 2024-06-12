@@ -1,5 +1,48 @@
 <script>
- 
+    let weaponInput = ""
+    let dnaInput = ""
+    let corpseInput = ""
+
+
+    function handleKeyDown(event){
+        if (event.keyCode === 13) {
+            console.log("Enter key was pressed");
+        }
+    }
+
+    function checkWeapon(){
+        const weaponFlag = "mmCTF{hammer}"
+
+        if (weaponFlag === weaponInput) {
+            alert("Du fant gjerningsvåpenet!")
+        
+    } else {
+        alert("Prøv igjen")        
+    }
+    }
+    
+    function checkDna(){
+        const dnaFlag = "mmCTF{sædSpor}"
+
+        if (dnaFlag === dnaInput) {
+            alert("Du fant Biologisk spor!")
+        
+    } else {
+        alert("Prøv igjen")        
+    }
+    }
+
+
+    function checkPlace(){
+        const placeFlag = "mmCTF{bagasjerom}"
+
+        if (placeFlag === corpseInput) {
+            alert("Du fant gjerningsvåpenet!")
+        
+    } else {
+        alert("Prøv igjen")        
+    }
+    }
 </script>
 
 
@@ -12,32 +55,38 @@
                 Klarer du å samle alle bevisene og løse mysteriet? Din hjelp er avgjørende for å oppklare denne mystiske forbrytelsen.
             </h3>
             <div class="flagg">
-                <form > 
+                <form on:submit={checkWeapon}> 
                     <input
                         type="text"
-                        id="Flagg1"
-                        name="flagg1"
+                        id="weapon"
+                        name="Weapon"
                         placeholder="Gjerningsvåpen"
+                        bind:value={weaponInput}
+                        on:keydown={handleKeyDown}
                     />
                     <input type="Submit" value="Submit">
                 </form>
                     <br />
-                    <form >
+                    <form on:submit={checkDna}>
                     <input
                         type="text"
-                        id="Flagg2"
-                        name="flagg2"
+                        id="dna"
+                        name="Dna"
                         placeholder="Biologisk Spor"
+                        bind:value={dnaInput}
+                        on:keydown={handleKeyDown}
                     />
                     <input type="Submit" value="Submit">
                 </form>
                     <br />
-                    <form >
+                    <form on:submit={checkPlace}>
                     <input
                         type="text"
-                        id="Flagg3"
-                        name="flagg3"
+                        id="corpse"
+                        name="Corpse"
                         placeholder="Philippa Britton"
+                        bind:value={corpseInput}
+                        on:keydown={handleKeyDown}
                     />
                     <input type="Submit" value="Submit">
                 </form>
