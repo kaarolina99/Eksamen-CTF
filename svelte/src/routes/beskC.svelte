@@ -4,45 +4,98 @@
     let corpseInput = ""
 
 
+    async function submitFlag(bevis, flag) {
+  try {
+    const response = await fetch(`http://localhost:8000/checkFlag`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ bevis, flag }),
+    });
+    const result = await response.json();
+    if (result.success) {
+      alert("Du fant flagget!");
+    } else {
+      alert("Prøv igjen!");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong!");
+  }
+}
+
+
+
+    function handleweaponSubmit(event) {
+        event.preventDefault();
+        submitFlag("våpen", weaponInput);
+    }
+
+    function handleDnaSubmit(event) {
+        event.preventDefault();
+        submitFlag("dna", dnaInput);
+    }  
+
+    function handleCorpseSubmit(event) {
+        event.preventDefault();
+        submitFlag("lik", corpseInput);
+    }
+
     function handleKeyDown(event){
         if (event.keyCode === 13) {
             console.log("Enter key was pressed");
         }
     }
 
-    function checkWeapon(){
-        const weaponFlag = "mmCTF{hammer}"
+    // function checkWeapon(){
+    //     const weaponFlag = "mmCTF{hammer}"
 
-        if (weaponFlag === weaponInput) {
-            alert("Du fant gjerningsvåpenet!")
+    //     if (weaponFlag === weaponInput) {
+    //         alert("Du fant gjerningsvåpenet!")
         
-    } else {
-        alert("Prøv igjen")        
-    }
-    }
+    // } else {
+    //     alert("Prøv igjen")        
+    // }
+    // }
     
-    function checkDna(){
-        const dnaFlag = "mmCTF{sædSpor}"
+    // function checkDna(){
+    //     const dnaFlag = "mmCTF{sædSpor}"
 
-        if (dnaFlag === dnaInput) {
-            alert("Du fant Biologisk spor!")
+    //     if (dnaFlag === dnaInput) {
+    //         alert("Du fant Biologisk spor!")
         
-    } else {
-        alert("Prøv igjen")        
-    }
-    }
+    // } else {
+    //     alert("Prøv igjen")        
+    // }
+    // }
 
 
-    function checkPlace(){
-        const placeFlag = "mmCTF{bagasjerom}"
+    // function checkPlace(){
+    //     const placeFlag = "mmCTF{bagasjerom}"
 
-        if (placeFlag === corpseInput) {
-            alert("Du fant gjerningsvåpenet!")
+    //     if (placeFlag === corpseInput) {
+    //         alert("Du fant gjerningsvåpenet!")
         
-    } else {
-        alert("Prøv igjen")        
+    // } else {
+    //     alert("Prøv igjen")        
+    // }
+    // }
+
+    function hintWeapon(){
+        alert("Har du merkert åstedet?")
     }
+
+    function hintDna(){
+        alert("Hmm..Er det bare roboter som kan finne veien?")
     }
+
+    function hintCorpse(){
+        alert("Lurer på om fotografen har gjemt noe?")
+    }
+
+
+
 </script>
 
 
@@ -55,7 +108,7 @@
                 Klarer du å samle alle bevisene og løse mysteriet? Din hjelp er avgjørende for å oppklare denne mystiske forbrytelsen.
             </h3>
             <div class="flagg">
-                <form on:submit={checkWeapon}> 
+                <form on:submit={handleweaponSubmit}> 
                     <input
                         type="text"
                         id="weapon"
@@ -65,9 +118,10 @@
                         on:keydown={handleKeyDown}
                     />
                     <input type="Submit" value="Submit">
+                    <button on:click={hintWeapon}>?</button>
                 </form>
                     <br />
-                    <form on:submit={checkDna}>
+                    <form on:submit={handleDnaSubmit}>
                     <input
                         type="text"
                         id="dna"
@@ -77,21 +131,24 @@
                         on:keydown={handleKeyDown}
                     />
                     <input type="Submit" value="Submit">
-                </form>
-                    <br />
-                    <form on:submit={checkPlace}>
-                    <input
-                        type="text"
-                        id="corpse"
-                        name="Corpse"
-                        placeholder="Philippa Britton"
-                        bind:value={corpseInput}
-                        on:keydown={handleKeyDown}
-                    />
-                    <input type="Submit" value="Submit">
-                </form>
+                    <button on:click={hintDna}>?</button>
+                    </form>
+                        <br />
+                        <form on:submit={handleCorpseSubmit}>
+                        <input
+                            type="text"
+                            id="corpse"
+                            name="Corpse"
+                            placeholder="Philippa Britton"
+                            bind:value={corpseInput}
+                            on:keydown={handleKeyDown}
+                        />
+                        <input type="Submit" value="Submit">
+                        
+                    </form>
+                    <button on:click={hintCorpse}>?</button>
             </div>
-    </div>
+</div>
 
 
 <style>

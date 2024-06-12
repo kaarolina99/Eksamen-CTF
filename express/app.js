@@ -3,32 +3,24 @@ const cors = require("cors");
 const path = require("path");
 const db = require("./db.js");
 const port = 8000;
+const { test } = require("./db.js");
 
-const app = express;
+const app = express();
 app.use(cors());
+app.use(express.json());
 
-app.get("/", async (req, res) => {
+app.post("/checkFlag", async (req, res) => {
+  const { bevis, flag } = req.body;
   try {
-    const result = await db.query("SELECT * FROM lik");
-    res.json(result.rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-app.get("/lik", async (req, res) => {
-  const bevis = "hammer";
-  const passord = "mm{hammer}";
-  try {
-    const result = await db.query(
-      "SELECT * FROM lik WHERE bevis = $1 AND passord = $2",
-      [bevis, passord]
-    );
-    res.json(result.rows); // Send the query results as JSON
-  } catch (err) {
-    console.error("Error executing query", err.stack);
-    res.status(500).send("Internal Server Error");
+    const result = await test(bevis, flag);
+    if (result) {
+      res.json({ success: true });
+    } else {
+      res.json({ success: false });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 });
 
